@@ -9,7 +9,7 @@ public class BufferMain {
 	
 	// 이미지 복사하기
 	public static void main(String[] args) throws Exception {
-		
+	// throws 가 있는 이유는 input output 에 대해서 나오는 일반 예외를 처리하기 위해서
 		// 1-1. 파일 읽어올 빨대 준비 // 읽어올 위치 + 파일 객체 + 읽어올 스트림
 		FileInputStream fis = new FileInputStream("C:/img/high.mp4");		
 		// 1-2. 나갈 빨대 준비 // 내보낼 위치 + 파일 객체 + 내보낼 스트림
@@ -24,7 +24,7 @@ public class BufferMain {
 		long end = 0;
 		
 		// 2. 읽어오기+쓰기
-		int data;
+		int data; //read 로 읽어오는 값이 1byte 씩 읽어옴
 		start = System.currentTimeMillis();
 		while ((data = bis.read()) != -1) {
 			bos.write(data);

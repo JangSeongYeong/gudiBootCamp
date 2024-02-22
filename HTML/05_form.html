@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 태그</title>
+</head>
+<body>
+    <!-- action : 데이터를 보낼 서버 주소 -->
+    <!-- 
+        method : 보내는 방식 
+        GET - 보내는 데이터가 url 에 노출 / 보안성 낮음 / 속도 빠름 / 데이터 제한 있음 (최대 1000자?)
+        POST - 보내는 데이터 안보여줌 / 보안성 높아 / 속도 낮음 / 데이터 거의 무제한 (제한이 있지만 헤제 가능)
+    -->
+    
+    <form action="" method="post">
+        <!-- input이 안에 들어가 있야 서버로 전송이 된다. -->
+        ID : <input type="text" name="id" value=""/>
+        <br/><br/>
+        PW : <input type="password" name="pw" value=""/>
+        <br/><br/>
+        <input type="submit" value="로그인">
+    </form>
+</body>
+</html>

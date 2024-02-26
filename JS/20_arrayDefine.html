@@ -1,0 +1,46 @@
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <title>JAVA SCRIPT</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 배열 선언 1
+    var arrNum = [];
+    // 배열 선언 2
+    var arrStr = new Array();
+
+    // 배열에 데이터 넣기
+    arrNum = [1,2,3,4]; // 한번에 넣는 방법
+    arrNum[4] = 5; // 특정 인덱스를 지정해서 넣는 방법
+    arrNum.push(6); // push() 함수를 통해 넣는 방법 : 마지막 인덱스 바로 다음에 넣는다.
+
+    // 배열의 크기 확인
+    console.log(arrNum.length);
+
+    // 배열안의 값 확인
+    console.log('arrayNum 안의 값 : '+arrNum);
+    console.log('arrayNum 안의 값 : ',arrNum);
+    
+    // 정말로 배열 안에는 아무 데이터 타입이나 다 들어가는가?
+    arrStr.push(1);
+    arrStr.push('A');
+    arrStr.push(false);
+    arrStr.push([10,20,30]);
+    arrStr.push(function(){
+        console.log('함수 실행');
+    });
+
+    console.log(arrStr[0]);
+    console.log(arrStr[1]);
+    console.log(arrStr[2]);
+    console.log(arrStr[3]);
+    arrStr[4](); // 함수를 넣었을 때 실행하기 위해서는 ()를 추가해야 한다.
+</script>
+</html>

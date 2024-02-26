@@ -1,0 +1,53 @@
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <title>JAVA SCRIPT</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- 중요 -->
+    <button onclick="arrPush()">push</button>
+    <button onclick="arrPop()">pop</button>
+    <button onclick="arrUnshift()">unshift</button>
+    <button onclick="arrShift()">shift</button>
+    <hr/>
+    <!-- 유용 -->
+    <button onclick="">범위 자르기</button>
+    <button onclick="">splice Del</button>
+    <button onclick="">splice Add</button>
+    <hr/>
+    <!-- 사용도 높지 않음 -->
+    <button onclick="">재열 병합</button>
+    <button onclick="">delete</button>
+    <button onclick="">join</button>
+</body>
+<script>
+    var arr = [];
+    var i = 1;
+
+    function arrPush(){
+        arr.push(i);
+        i++;
+        console.log(arr);
+    }
+
+    function arrPop(){
+        var num = arr.pop();
+        console.log(num,arr);
+    }
+
+    function arrUnshift(){
+        arr.unshift(i);
+        i++;
+        console.log(arr);
+    }
+
+    function arrShift(){
+        var num = arr.shift();
+        console.log(num,arr);
+    }
+</script>
+</html>

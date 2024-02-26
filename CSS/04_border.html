@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        /*border-[top|right|bottom|left]-[width|style|color]*/    
+        .one{
+            border: 5px solid red;
+        }
+
+        .two{
+            border-width: 10px;
+            border-style: groove;
+            border-color: black;
+        }
+        .three{
+            border-top-style: dotted;
+            border-right-style: double;
+            border-bottom-style: solid;
+            border-left-style: dashed;
+        }
+        .four{
+            /* 전방향 */
+            border-style: dotted;
+            /*12->3->6->9*/
+            border-color: red orange green blue;
+        }
+        .five{
+            /*12&6 3&9*/
+            border-style: dashed solid;
+            border-color: red blue;
+        }
+    </style>
+</head>
+<body>
+    <p class="one">컨텐트 입니다.</p>
+    <p class="two">컨텐트 입니다.</p>
+    <p class="three">컨텐트 입니다.</p>
+    <p class="four">컨텐트 입니다.</p>
+    <p class="five">컨텐트 입니다.</p>
+</body>
+</html>

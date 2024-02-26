@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        div.bg{
+            position: absolute;
+            background-color: black;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+        dialog{
+            z-index: 2;
+            top: 5%;
+        }
+        div.notice{
+            z-index: 3;
+            position: absolute;
+            width: 400px;
+            background-color: white;
+            top: 15%;
+            left: 35%;
+            text-align: center;
+        }
+        div.txt{
+            text-align: left;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <dialog open>공지사항2</dialog>
+    
+    <div class="notice">
+        <h2>공지사항</h2>
+        <div class="txt">
+            <p>다음과 같은 공지사항을 알려 드립니다.</p>
+            <p>공지내용 1</p>
+            <p>공지내용 2</p>
+            <p>공지내용 3</p>
+            <a href="#">닫기</a>
+        </div>
+    </div>
+    
+    <div class="bg"></div>
+</body>
+</html>

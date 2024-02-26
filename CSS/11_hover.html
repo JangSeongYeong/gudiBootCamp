@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        div{
+            width: 100px;
+            height: 25px;
+            border: 1px solid black;
+            text-align: center;
+            float: left;
+            margin: 5px;
+            transition: all 0.5s;
+        }
+
+        /* div:hover{
+            background-color: yellow;
+        } */
+
+        a:link{ /*평소상태*/
+            text-decoration: none;
+            color: black;
+        }
+
+        a:visited{ /*링크를 클릭한 적이 있는 경우*/
+             color: lightgray;
+        }
+
+        a:hover{ /*마우스가 올라간 경우*/
+            text-decoration: underline;
+            color: black;
+        }
+
+        a:active{ /*링크를 클릭하는 순간*/
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="https://www.daum.net">DAUM</a>
+    </div>
+    <div>
+        <a href="https://www.google.com">GOOGLE</a>
+    </div>
+    <div>
+        <a href="https://www.naver.com">NAVER</a>
+    </div>
+    <div>
+        <a href="https://www.nate.com">NATE</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        /* css 에서 사용되는 주석*/
+        p{
+            /* p 태그 전체에 배경색을 입힌다.*/
+            background-color: aquamarine;
+        }
+
+        .myclass{
+            /* class 이름이 myclass 인 요소의 글자 색상을 변경*/
+            color: crimson;
+        }
+
+        #myid{
+            /* 
+                id가 myid 인 요소의 글자 굵기를 변경한다.
+                아이디는 중복되어서는 안된다.(중복될 경우 맨 위의 아이디만 적용된다.)
+            */
+            font-weight: 600;
+        }
+
+        /*p 와 div 모두 선택*/
+        p,div{
+            font-size: 24px;
+        }
+
+        /* div 자식인 p, > 대신 공백으로 해도 된다.*/
+        div>p{
+            background-color: deeppink;
+        }
+
+        /* 특정 태그에 특성 속성을 가지고 있는 요소 선택*/
+        input[type="text"]{
+            background-color: skyblue;
+        }
+        input[type="email"]{
+            background-color: rebeccapurple;
+        }
+
+        img{
+            width: 100px;
+        }
+
+        /* 단어 단위 검색*/
+        /* ~= 단어 : 단어가 들어간*/
+        img[alt~="버섯"]{
+            border: 1px solid black;
+        }
+
+        a:hover{
+            background-color: darkgray;
+        }
+
+        /*img 에 hover 했을 때*/
+        img:hover{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <p id="myid">id 가 있는 요소</p>
+    <p class="myclass">class 가 있는 요소</p>
+    <p class="myclass">class 가 있는 요소</p>
+    <p>태그만 있는 요소</p>
+
+    <div>DIV 요소</div>
+    <div>
+        <p>DIV 안의 p태그(p는 DIV 의 자식)</p>
+    </div>
+
+    <input type="text"/>
+    <input type="email"/>
+    <br/>
+    <img src="../img/img01.jpg" alt="라이프 버섯"/>
+    <img src="../img/img02.jpg" alt="파이어 플라워"/>
+    <img src="../img/img03.jpg" alt="마리오"/>
+    <img src="../img/img04.jpg" alt="꿀벌 버섯"/>
+    <br/>
+    <a href="#">테스트 링크</a>
+</body>
+</html>

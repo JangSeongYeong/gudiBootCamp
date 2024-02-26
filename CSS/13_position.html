@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        div.static{
+            position: static;
+            background-color: yellow;
+            /*static 은 어떤 기준이 되는 요소 - relative 로도 대체 되므로 거의 사용하지 않는다.*/
+        }
+        div.relative{
+            position: relative;
+            background-color: aqua;
+            top: 1000px; /*static 의 하단 준*/
+            left: 200px; /*static 의 achor point 의 x 축 기준으로*/
+        }
+        div.fixed{ /*따라다니는 메뉴*/
+            position: fixed;
+            right: 10%;
+            top: 10%;
+            background-color: cadetblue;
+        }
+        div.absolute{ /*팝업*/
+            width: 100px;
+            height: 100px;
+            border: 3px solid red;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="static">
+        position:static
+    </div>
+    <div class="relative">
+        position:relative
+        <div class="absolute">position:<br/>absolute</div>
+    </div>
+    <div class="fixed">
+        position:fixed
+    </div>
+</body>
+</html>

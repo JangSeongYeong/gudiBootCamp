@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        input[type="text"]{
+            display: block; /*none|inline|block*/
+        }
+       
+        div{
+            width: 50px;
+            height: 25px;
+            border: 3px solid yellowgreen;
+            margin: 5px 5px 5px 0px;
+            /*float : 특정한 방향으로 정렬이 흘러가도록 하는 속성*/
+            float: left;
+        }
+
+        /*사이 공백이 있다면 자식, 없다면 동일요소*/
+        div.first{
+            border-color: red;
+            /* float:left 속성을 지우고(벗어나고) 싶다.*/
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- inline : 좌에서 우로 정렬 -->
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+
+    <!-- block : 위에거 아래로 정렬 -->
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <div class="first"></div>
+    <div></div>
+    <div></div>
+
+    <div class="first"></div>
+    <div></div>
+    <div></div>
+
+</body>
+</html>

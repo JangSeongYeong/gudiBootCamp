@@ -1,0 +1,56 @@
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <title>JAVA SCRIPT</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // iterator : 하나씩 꺼내는 반복을 할때 사용하는 단어
+    var arr = [0,1,2,3,4,5,6,7,8,9];
+
+    // 기본 for 문 - 반복의 시작과 끝을 내가 정할 수 있다.
+    for (var i= 0; i < arr.length; i++){
+        console.log(i+":"+arr[i]);
+    }
+    console.log('------------');
+
+    // freach - 한번 시작하면 끝까지 가야 한다.
+    arr.forEach(function(item, idx){ // 개별 값, 해당 인덱스
+        console.log(idx, '=', item);
+    });
+    console.log('------------');
+
+    // for of -- 몇번째 값을 가져오고 있는지 알 수 없다.
+    for (var n of arr) {
+        console.log(n);
+    }
+
+    var computer = {};
+    computer['cpu'] = 'octa core';
+    computer['ram'] = '16GB';
+    computer['ssd'] = '2TB';
+    computer['price'] = 1400000;
+    // 해쉬 맵에 있는 값을 하나씩 어떻게 가져왔는가?
+    /*
+        1. keyset를 통해 key 값 뭉텅이를 가져온다.
+        2. iterator로 쪼갠다.
+        3. loop를 통해서 key값에 맞는 값이 있는지 확인 후 value를 가져온다.    
+    */
+    //Object.keys(객체) : 객체의 키를 배열 형태로 변환
+    var keys = Object.keys(computer);
+    console.log(keys);
+    for(var key of keys){
+        /* 변수 안의 값을 키로 사용할 수가 없다.
+        console.log(key+' : ',computer.key); // consloe : undifind -> computer 의 key 속성을 찾기 때문
+        */
+        console.log(key+' : ',computer[key]);
+    }
+
+</script>
+</html>

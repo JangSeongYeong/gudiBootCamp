@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>H1 TAG1</h1>
+    <h1>H1 TAG2</h1>
+    <h1>H1 TAG3</h1>
+    <h1>H1 TAG4</h1>
+
+    <h2 class="head2">Head2</h2>
+    <h2 class="head2">Head2</h2>
+    <h2 class="head2">Head2</h2>
+    <h2 class="head2">Head2</h2>
+
+    <h3 id="head3">H3 TAG1</h3>
+</body>
+<script>
+    // getElements : 갯수에 상관없이 배열에 담아오겠다는 의미
+    var elemTags = document.getElementsByTagName('h1');
+    console.log(elemTags);
+
+    var elemClass = document.getElementsByClassName('head2');
+    console.log(elemClass);
+
+    var elemId = document.getElementById('head3');
+    console.log(elemId);
+
+    console.log('------------');
+
+    // 쿼리셀렉터 : css 의 셀렉터를 차용한 방식
+    // 복수개의 요소가 있을 경우 가장 위에 있는 하나만 가져올 수 있다.
+    elemTags = document.querySelector('h1');
+    console.log(elemTags);
+
+    elemClass = document.querySelector('.head2');
+    console.log(elemClass);
+
+    // 복수개를 가져올 수 있는 쿼리 셀렉터
+    elemClass = document.querySelectorAll('.head2');
+    console.log(elemClass);
+
+    
+</script>
+</html>

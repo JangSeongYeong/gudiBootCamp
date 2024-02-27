@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1 id="p1"></h1>
+    <img src="../img/img01.jpg"/><br/>
+    <input type="text" value="아무 내용이나"/>
+    <a href="#" my-attr="head">링크 클릭</a> <!-- my가 붙으면 내가 만든 설정이다-->
+    <a href="#" my-attr="main">링크 클릭</a>
+    <a href="#" my-attr="footer">링크 클릭</a>
+
+</body>
+<script>
+    // id="p1" 인 태그 가져오기
+    var elem;
+    elem = document.getElementById('p1');
+    // console.log(elem);
+
+    elem.innerHTML = '새로운 텍스트 등장'; // elem 의 태그 사이에 텍스트 추가
+    elem.style.backgroundColor = 'yellow'; // elem 의 style 태그로 가서 backgroundColor 변경    
+
+    // img 태그 가져오기
+    var img = document.getElementsByTagName('img');
+    // console.log(img[0]);
+    // img 의 src 속성의 값을 "../img/img02.jpg" 로 변경
+    img[0].src = '../img/img02.jpg'; // 기본 속성만 가능
+    // img[0].setAttribute('src', '../img/img02.jpg');
+
+    // input 태그 가져오기
+    var input = document.getElementsByTagName('input');
+    // console.log(input[0]);
+    // input 태그의 모양을 버튼으로 바꿔보자
+    input[0].type = 'button';
+    input[0].value = '버튼';
+
+    // a 태그들 가져오기
+    // 사용자 속성
+    var tags = document.getElementsByTagName('a');
+    console.log(tags);
+    for(var tag of tags){
+        //console.log(tag);
+        // 각 태그에 my-attr 속성 값을 콘솔로 출력
+        var attr = tag.getAttribute('my-attr');
+        console.log(attr);
+
+        // tab의 값인 '링크 클릭' 을 my-attr 의 값으로 변경 하세요
+        // tag.innerHTML = attr;
+        tag.innerHTML = '<h1>'+attr.toLocaleUpperCase()+'</h1>';
+    }
+
+    // 기본 속성
+    console.log(img);
+</script>
+</html>

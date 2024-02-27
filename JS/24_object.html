@@ -1,0 +1,54 @@
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <title>JAVA SCRIPT</title>
+    <link rel="icon" href="../img/chrome.png">
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 오브젝트 만드는 방법 1 - 초기에 값을 넣고 시작
+    var car = {type:'Fiat', model:500, color:'white'};
+    console.log(car);
+    // 오브젝트 만드는 방법 2 - 리터럴
+    var person = {};
+    // 오브젝트 만드는 방법 3 - new 키워드 사용
+    var computer = new Object();
+
+
+    // object 에 값 추가하기 1 - java 에서 객체 사용 하듯이
+    person.name = 'lee';
+    person.gender = 'male';
+    person.age = 26;
+    console.log(person);
+
+    // object 에 값 추가하기 2 - 오브젝트는 인덱스가 문자열인 배열이다.
+    computer['cpu'] = 'octa core';
+    computer['ram'] = '16GB';
+    computer['ssd'] = '2TB';
+    computer['price'] = 1400000;
+    console.log(computer); 
+
+    // 오브젝트 안에도 함수가 들어갈 수 있다.
+    person.work = function(){
+        console.log('일한다.');
+    };
+    console.log(person);
+    // 위에 선언한 함수 실행해 보기
+    person.work();
+    console.log('name : ',person.name);
+    console.log('age : ',person['age']);
+    // computer 내용도 모두 출력해 보자
+    console.log('cpu : ',computer.cpu);
+    console.log('ram : ',computer['ram']);
+    console.log('ssd : ',computer.ssd);
+    console.log('pirice : ',computer['price']);
+
+    
+
+</script>
+</html>

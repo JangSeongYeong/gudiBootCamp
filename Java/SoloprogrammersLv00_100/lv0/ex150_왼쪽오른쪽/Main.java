@@ -9,8 +9,8 @@ public class Main {
 		Solution sol = new Solution();
 		String[] result;
 		
-		result = sol.solution(new String[] {"u", "u", "l", "r"});
-		System.out.println("[\"u\", \"u\"] == "+Arrays.toString(result));
+		result = sol.solution(new String[] {"r", "u", "d", "d"});
+		System.out.println("[\"u\", \"d\", \"d\"] == "+Arrays.toString(result));
 		
 	}
 

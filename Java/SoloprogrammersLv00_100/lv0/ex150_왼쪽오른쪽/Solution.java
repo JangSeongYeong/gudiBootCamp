@@ -6,25 +6,44 @@ public class Solution {
 	 * 해당 문자열을 기준으로 왼쪽에 있는 문자열들을 순서대로 담은 리스트를, 
 	 * 
 	 * 먼저 나오는 문자열이 "r"이라면 
-	 * 해당 문자열을 기준으로 오른쪽에 있는 문자열들을 순서대로 담은 리스트를 return하도록 solution 함수를 완성해주세요. 
+	 * 해당 문자열을 기준으로 오른쪽에 있는 문자열들을 순서대로 담은 리스트를 return 하도록 solution 함수를 완성해주세요. 
 	 * 
-	 * "l"이나 "r"이 없다면 빈 리스트를 return합니다.*/
+	 * "l"이나 "r"이 없다면 빈 리스트를 return 합니다.*/
 	public String[] solution(String[] str_list) {
 		
+		// 문자열로 만들기
 		StringBuffer buffer = new StringBuffer();
 		for (String str : str_list) {
 			buffer.append(str);
 		}
 		
 		String str = buffer.toString();
-        // 문자열로 바꾸고 indexof로 가까운값
-		int brk;
+        
+		// indexOf 로 가까운값
+		int ridx = str.indexOf("r");
+		int lidx = str.indexOf("l");
+		System.out.println(ridx);
+		System.out.println(lidx);
 		
-		if (brk == 0) {
+		
+		String[] answer;
+		// 둘다 못찾았을 때
+		if (ridx == -1 && lidx == -1) {
 			return new String[] {};
+		} else if((lidx < ridx || ridx == -1) && lidx != -1) {
+			// "ㅣ"을 더 빨리 찾았을때
+			answer = new String[lidx];
+			for (int i = 0; i < lidx; i++) {
+				answer[i] = str_list[i];
+			}
+		} else {
+			// "r"을 더 빨리 찾았을때
+			answer = new String[str_list.length-ridx-1];
+			for (int i = 0; i < str_list.length-ridx-1; i++) {
+				answer[i] = str_list[ridx+1+i];
+			}
 		}
 		
-        String[] answer = {};
         return answer;
     }
 }

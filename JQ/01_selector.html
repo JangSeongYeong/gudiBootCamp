@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>클래스가 없다.</h1>
+    <h1 class="cls">클래스가 있다.</h1>
+    <h1>클래스가 없다.</h1>
+    <h1 class="cls">클래스가 있다.</h1>
+    
+    <p id="one">아이디가 있는 요소</p>
+    <p>태그만 있는 요소</p>
+
+    <h3>List 1:</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>J-QUERY</li>
+    </ul>
+
+    <h3>List 2:</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>J-QUERY</li>
+    </ul>
+    
+    <a href="#">사이트 링크 A</a><br/>
+    <a href="#">사이트 링크 B</a><br/>
+    <a href="#" target="_blank">사이트 링크 C</a><br/>
+    
+
+</body>
+<script>
+    /* js
+    // 아이디가 one 인 요소 가져와 콘솔로 찍어보기
+    console.log(document.getElementById('one'));
+    // 클래스가 csl 인 요소 가져와 콘솔로 찍어보기
+    console.log(document.getElementsByClassName('csl'));
+    // 태그가 p 인 요소 가져와 콘솔로 찍어보기
+    console.log(document.getElementsByTagName('p'));
+    */
+    
+    // JQ
+    console.log($('#one')); // 아이디가 one
+    console.log($('.one')); // 클래스가 cls
+    console.log($('p')); // 태그가 p
+    console.log($('*')); // html 이하의 모든 요소 모두
+
+    // 000 중에서..
+    console.log($('h1.cls')); // h1 태그 중에서 클래스가 cls
+    console.log($('p:first')); // p 태그 중에서 첫번째 요소
+    console.log($('ul li')); // ul 태그의 자식인 li
+    
+    // 복잡하면 신경 쓰지 말것
+    console.log($('ul li:first')); // 첫 ul 의 자식중 첫 li
+    console.log($('ul li:first-child')); // 모든 ul 의 자식 중 첫 li
+
+    // this 는 이벤트가 걸린 당사자
+    $('p').click(function(){
+        console.log($(this));
+    });
+
+    // 속성 활용
+    // a 태그 중에서 href 속성을 가지고 있는 요소
+    console.log($('a[href]')); 
+    // a 태그 중에서 target 속성이 _blank 인 요소
+    console.log($('a[target="_blank"]'))
+    // a 태그 중에서 target 속성이 _blank가 아닌 요소
+    console.log($('a[target!="_blank"]'))
+    
+</script>
+</html>

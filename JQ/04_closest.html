@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .ancestors *{
+            display: block;
+            border: 2px solid gray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ancestors">
+        <div>div(great-grandparent)
+            <ul>ul(grandparent)
+                <li>li(parent)
+                    <span id="item">span</span>
+                </li>
+            </ul>
+        </div>
+        <div>div(grandparent)
+            <p>p(parent)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+</body>
+<script>
+    // html 까지 올라가면서 부모중 div 는 모두 찾아온다.
+    $('#item').parents('div').css({'border':'2px solid red'});
+    // html 까지 올라가면서 부모중 처음 찾은 div를 가져온다.
+    $('#item').closest('div').css({'border':'2px solid blue'});
+</script>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            /* border: 1px solid black; */
+            margin: 30px;
+        }
+        p{
+            text-align: center;
+            border: 1px solid gray;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>ELEMENT 1</p>
+        <p class="sel">ELEMENT 2</p>
+        <p>ELEMENT 3</p>
+        <p class="sel">ELEMENT 4</p>
+    </div>
+    <div>
+        <p>ELEMENT 5</p>
+        <p class="sel">ELEMENT 6</p>
+        <p>ELEMENT 7</p>
+        <p class="sel">ELEMENT 8</p>
+    </div>
+</body>
+<script>
+    // 배열 개념
+    console.log($('div p').first());
+    console.log($('div p').eq(0));
+    console.log($('div p').last());
+    console.log($('div p').eq($('div p').length-1));
+    
+    // 필터링 개념 
+    // (1차 셀렉터로 가져온 내용을 2차로 한번 더 걸러준다.)
+    console.log($('div p').filter('.sel')); // 클래스가 sel 인거만
+    console.log($('div p').not('.sel'));
+    
+</script>
+</html>

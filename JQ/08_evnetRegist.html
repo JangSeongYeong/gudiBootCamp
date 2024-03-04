@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <button id="btn">버튼 생성</button>
+    <button id="evtDel">이벤트 삭제</button>
+    <div style="margin: 10px;"></div>
+</body>
+<script>
+    // $(셀렉터).on('이벤트', 실행함수);
+    $('#btn').on('click', function(){
+        $('div').append('<button onclick="clickEvt()">click</button>');
+        $('div').append('<button class="newBtn">click2</button>');
+        
+        /* 이벤트가 실행 되었을 때 생성된 버튼이 이벤트를 걸어준다.
+        // 이벤트가 요소에 중복적용 될 수 있다.
+        $('div button').off('click');
+        $('div button').on('click', function(){
+            alert('click');
+        });
+        */
+    });
+    
+    // $(셀렉터).이벤트(실행함수);
+    $('#evtDel').click(function(){
+        $('#btn').off('click'); // on 으로 추가된 이벤트는 off 로 삭제 가능
+    });
+    
+    // 새로 생긴 버튼을 누르면 alert('click') 이 나타나도록 해보자
+    console.log($('div button')); // length 0
+    /* 아래 방법으로는 안된다.(이 구문을 읽기 시작할 때는 버튼이 아직 없다.)
+    $('div button').on('click', function(){
+        alert('click');
+    });
+    */
+
+    // 1. on 속성을 이용하는 방법 (추천)
+    function clickEvt(){
+        alert('click');
+    }
+
+    // 2. document 에 이벤트를 건다. - 나중에 생긴거라서 구버전에 없을 수 있다.
+    // $(셀렉터).on(이벤트, 타겟, 실행함수);
+    $(document).on('click','.newBtn',function(){
+        alert('click2');
+    });
+
+</script>
+</html>

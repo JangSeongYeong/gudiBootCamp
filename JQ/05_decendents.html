@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .ancestors *{
+            display: block;
+            border: 2px solid gray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ancestors">
+        <div>div(great-grandparent)
+            <ul>ul(grandparent)
+                <li>li(parent)
+                    <span id="item">span</span>
+                </li>
+            </ul>
+        </div>
+        <div>div(grandparent)
+            <p>p(parent)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+</body>
+<script>
+    // 선택한 요소의 바로 아래 자식들을 선택
+    console.log($('.ancestors').children());
+    $('.ancestors').children().css({'background':'lightyellow'});
+    // 선택한 요소의 자식 요소들중 2번째 인자값을 만족하는 요소를 선택
+    console.log($('.ancestors').find('span'));
+    $('.ancestors').find('span').css({'background':'blue'});
+</script>
+</html>

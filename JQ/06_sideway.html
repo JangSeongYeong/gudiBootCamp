@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div.siblings *{
+            display: block;
+            border: 2px solid gray;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="siblings">DIV(parent)
+        <p>ELEMENT 1</p>
+        <span>ELEMENT 2</span>
+        <span>ELEMENT 3</span>
+        <span>ELEMENT 4</span>
+        <h3>ELEMENT 5</h3>
+        <h4>ELEMENT 6</h4>
+        <h5>ELEMENT 7</h5>
+        <h6>ELEMENT 8</h6>
+        <p>ELEMENT 9</p>
+    </div>
+</body>
+<script>
+    //siblings() 선택한 요소의 동일선상 형제들을 모두 (나를 제외한)
+    // $('h3').siblings().css({'border-color':'red'});
+    // 두번째 인자값에 해당하는 형제들만 가져옴
+    $('h3').siblings('span').css({'border-color':'red'});
+    
+    // next() : 선택한 요소 바로 다음 (아래)
+    $('h3').next().css({'color':'blue'});
+    // prev() : 선택한 요소 바로 이전 (위)
+    $('h3').prev().css({'color':'aqua'});
+
+    // nextAll() : 선택 요소 아래의 모든 요소 (2번째 인자값이 있다면 인자값만 골라온다.)
+    $('h3').nextAll('h6').css({'background-color':'yellow'});
+    // prevAll() : 선택 요소 위의 모든 요소 (2번째 인자값이 있다면 인자값만 골라온다.)
+    $('h3').prevAll('span').css({'background-color':'yellow'});
+
+    // nextUntil() : 선택요소와 인자값 요소 사이 (next 방향으로)
+    // prevUntil() : 선택요소와 인자값 요소 사이 (prev 방향으로)
+    // h3 와 p 사이에 border-color 를 변경하세요
+    $('h3').nextUntil('p').css({'border-color':'blue'});
+    $('h3').prevUntil('p').css({
+        'border-color':'black',
+        'font-weight':600
+    });
+</script>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+        #count{
+            color: red;
+        }
+        progress{
+            display: none;
+            width: 500px;
+            height: 25px;
+        }
+        #proc{
+            display: none;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: 100px;
+            left: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body onload="start()">
+    <h1><span id="count">5</span> 초 후 다운로드가 진행됩니다.</h1>
+    <progress id="download" max="100" value="0"></progress>
+    <div id="proc"></div>
+</body>
+<script>
+    // 몇 초 후 다운로드 진행 된다는 것이 숫자가 줄어듬
+    // 0이 되면 다운로드 진행중(n%)으로 바뀌고 끝나면 다운로드 완료
+    // proc은 progress 값에 따라서 위치 변경
+    var inter;
+    var i = 4;
+    var count = document.getElementById('count');
+    function start(){
+        inter = setInterval(function(){
+            if(i == 0){
+                clearInterval(inter);
+                downloading();
+            }
+            count.innerHTML = i;
+            i--;
+        }, 1000);
+    }
+    
+    var proc = document.getElementById('proc');
+    var download = document.getElementById('download');
+    var h1 = document.getElementsByTagName('h1')[0];
+    var percent = 0;
+    var position = 10;
+    function downloading(){
+        h1.innerHTML = '다운로드 중('+percent+'%)';
+        download.style.display = 'inline'; 
+        proc.style.display = 'inline';
+        
+        inter = setInterval(function(){
+            percent += 1;
+            download.value = percent;
+            h1.innerHTML = '다운로드 중('+percent+'%)';
+            position += 5;
+            proc.style.left = position;
+
+            if(percent == 100){
+                clearInterval(inter);
+                h1.innerHTML = '다운로드 완료';
+            }
+        }, 100);
+    }
+
+</script>
+</html>

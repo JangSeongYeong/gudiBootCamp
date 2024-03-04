@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <button>alert()</button>
+    <button>confirm()</button>
+    <button>prompt()</button>
+</body>
+<script>
+    btn = document.getElementsByTagName('button');
+    btn[0].addEventListener('click', function(e){
+        console.log('alert()');
+        alert('경고창 입니다.'); // aelrt를 사용하면 동작이 멈춘다.
+    })
+
+    btn[1].addEventListener('click', function(e){
+        console.log('confirm())');
+        var flag = confirm('진짜로 모두 삭제 하시겠습니까?');
+        if(flag){
+            alert('삭제 되었습니다.');
+        }else {
+            alert('취소 되었습니다.');
+        } 
+    })
+
+    btn[2].addEventListener('click', function(e){
+        console.log('propmpt())');
+        var name = prompt('당신의 이름은?');
+        if(name == ""){
+            alert('이름을 입력해주세요');
+        } else {
+            alert(name+' 님, 안녕 하세요!');
+        }
+    })
+
+</script>
+</html>

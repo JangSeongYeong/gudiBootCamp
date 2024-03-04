@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <button onclick="myWindow()">basic</button>
+    <button onclick="closeWin()">창닫기</button>
+</body>
+<script>
+    var h = window.innerHeight;
+    var w = window.innerWidth;
+    console.log('창 크기 : '+w+'/'+h); // 개발자 모드를 제외한 나머지 창 크기
+
+    function myWindow(){
+        console.log('window popup');
+        // window.open(url, 창 옵션제목);
+        // 옵션이 없으면 새탭으로 띄워진다.
+        /*
+        width, height = 창의 크기
+        top, left = 창의 위치(듀얼 모니터의 경우 1번창 기준)
+        resizeable = 창 크기 조정 허용 여부 (IE 에서만 가능) // 사실상 안씀
+        scrollbar = 컨텐츠가 새창보다 큰 경우 스크롤 생성 여부 (IE, FIRE FOX, OPERA)
+        */
+        win = open('https://www.w3schools.com/js/default.asp','',
+            'width=400, height=400, top=500, left=500, resizeable=no, scrollbar=no');
+    }
+
+    function closeWin(){
+        console.log('window close');
+        // 자식창을 닫기 위한 필수 조건 : 자식창을 담은 변수가 있어야 한다.
+        // close();
+        win.close();
+    }
+
+</script>
+</html>

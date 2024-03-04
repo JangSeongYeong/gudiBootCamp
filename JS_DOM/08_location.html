@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <ol>
+        <li>location 은 위치 정보를 얻을때 사용한다.</li>
+        <li>window.location.href</li>
+        <li>window.location.protocol</li>
+        <li>window.location.hostname</li>
+        <li>window.location.pathname</li>
+        <li>window.location.port</li>
+        <li>window 는 생략 가능!</li>
+    </ol>
+    <button onclick="move()">페이지 이동</button>
+</body>
+<script>
+    // 서버환경에서만 확인 할 수 있다.
+    console.log(location.href); // 전체 경로
+    console.log(location.protocol); // 통신 프로토콜
+    console.log(location.hostname); // 도메인
+    console.log(location.pathname); // 도메인을 제외한 나머지 주소
+    console.log(location.port); // 포트번호
+
+    function move(){
+        location.href = 'https://www.naver.com';
+    }
+</script>
+</html>

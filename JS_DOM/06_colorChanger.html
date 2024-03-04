@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1 id="txt">글자 색상이 변경 됩니다.</h1>
+    <button id="btn">색상변경</button>
+</body>
+<script>
+    var txt = document.getElementById('txt');
+    var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple'];
+    var count = 0;
+    
+    document.getElementById('btn').addEventListener('click', function(e){
+        txt.style.color = color[count];
+        console.log(txt.style.color);
+        count++;
+        
+        if(count == 7){
+            count = 0;
+        }
+    })
+</script>
+</html>

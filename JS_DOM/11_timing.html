@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1 id="cnt">0</h1>
+    <button>증가</button>
+    <button>정지</button>
+    <button>3초 후 경고</button>
+</body>
+<script>
+    var cnt = document.getElementById('cnt');
+    var btn = document.getElementsByTagName('button');
+    var i = 0;
+    var inter;
+
+    btn[0].addEventListener('click', function(e){
+        // setInterval(실행할 함수, 시간(ms));
+        inter = setInterval(function(){
+            i++;
+            cnt.innerHTML = i;
+        },1000);
+        e.target.disabled = true; // 비활성화
+    });
+
+    btn[1].addEventListener('click', function(){
+        // clearInterval(중지할 인터벌이 들어있는 변수)
+        clearInterval(inter);
+        // 중지되어있는 버튼을 활성화 시키고 cnt 0으로 바꾸기
+        btn[0].disabled = false;
+        cnt.innerHTML = 0;
+        i = 0;
+    });
+
+    btn[2].addEventListener('click', function(){
+        // setTimeout(실행할 함수, 시간(ms));
+        setTimeout(function(){
+            alert('3초가 지났습니다.');
+        }, 3000);
+    });
+
+</script>
+</html>

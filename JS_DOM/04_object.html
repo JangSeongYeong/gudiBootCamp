@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <button onclick="arg1(event)">버튼 1</button>
+    <button onclick="arg1(this)">버튼 1</button>
+    <!-- 둘 다 받으면? -->
+    <p>
+        <a href="#" onclick="arg2(event, this)">클릭 1</a>
+    </p>
+    <p>
+        <a href="#" onclick="arg2(event, this)">클릭 2</a>
+    </p>
+    <p>
+        <a href="#" onclick="arg2(event, this)">클릭 3</a>
+    </p>
+</body>
+<script>
+    function arg1(obj){
+        // event : 일어난 이벤트와 관련된 모든 내용
+        // this : 이벤트가 일어난 당사자에 대한 내용
+        console.log('object : ',obj);
+    }
+
+    function arg2(evt, elem){
+        // console.log(evt);
+        console.log(elem);
+
+        // 클릭한 링크 명을 콘솔로 찍으세요
+        // this로 받아왔기에 elem값 가져오기
+        var val = elem.innerHTML;
+        // 콘솔로 찍기
+        console.log(val);
+    }
+
+</script>
+</html>

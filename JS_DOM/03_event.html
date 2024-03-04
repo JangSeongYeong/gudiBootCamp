@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM SCRIPT</title>
+    <link rel="icon" href="../img/logo.png">
+    <style>
+        div{
+            width: 250px;
+            height: 250px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<!-- onload : html 문서가 다 읽히면 발생하는 이벤트 -->
+<body onload="console.log('loading end')"> <!-- 싱글 쿼터를 사용하는 이유 - ""를 사용할 경우 겹쳐서-->
+    <!-- 이벤트는 한 요소에 다수개를 적용 할 수 있다.  -->
+    <div onmouseover="mouseEvt('over')" onmouseout="mouseEvt('out')"></div>
+    <!-- span : inline 속성을 가지고 있는 영역 태그 -->
+    <h3>오늘의 날짜 : <span id="demo"></span></h3>
+    <input type="button" onclick="getDay()" value="날짜 추출"/>
+
+    <input type="text" id="keyon" onkeydown="keyon()"/>
+    <input type="text" id="keyup" onkeyup="keyup()"/>
+    <h4 id="typing"></h4>
+
+    <select id="mySelect" onchange="selectOne()">
+        <option value="Audi">Audi</option>
+        <option value="BMW">BMW</option>
+        <option value="Benz">Benz</option>
+        <option value="Volvo">Volvo</option>
+    </select>
+
+</body>
+<script>
+
+    function selectOne(){
+        // 1. id('mySelect')를 이용해서 요소 가져오기
+        var elem = document.getElementById('mySelect');
+        // console.log(elem); 
+        // 2. 요소에서 속성 가져오기(value)
+        var value = elem.value;
+        // console.log(value);
+        // 3. id = "typing" 인 요소 가져오기
+        var elem = document.getElementById('typing')
+        // console.log(elem);
+        // 4. 요소에서 속성 입력하기(innerHTML="")
+        elem.innerHTML = value;
+    }
+
+
+    function keyon(){ // keydown : 키 입력 자체를 체크 할 경우
+        // 키를 누르면 일단 값을 가져오기 때문에, 아직 입력 후 문자화 되어 찍힌 값을 가져오지 못한다.
+        var msg = document.getElementById('keyon').value;
+        document.getElementById('typing').innerHTML = msg;
+    }
+
+    function keyup(){ // keyup : 입력한 값을 가져올 경우
+        var msg = document.getElementById('keyup').value;
+        document.getElementById('typing').innerText = msg;
+    }
+
+    var demo = document.getElementById('demo');
+    function getDay(){
+        var date = new Date();
+        console.log(date);
+        demo.innerHTML = date;
+        // document.getElementById('deme').innerHTML = new Date();
+    }
+
+    // 요소 가져오기
+    var div = document.getElementsByTagName('div')[0];
+    console.log(div);
+    function mouseEvt(arg){ // 이벤트에서 무언가를 넘겨주면 함수에서 받을 수 있다.
+        console.log('mouse '+arg);
+        if(arg == 'over'){
+            div.style.backgroundColor = 'red';
+        } else{
+            div.style.backgroundColor = 'yellowgreen';
+        }
+    }
+
+</script>
+</html>

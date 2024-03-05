@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .item div{
+            display: inline;
+        }
+        div.item{
+            width: 80%;
+            height: 30px;
+            border: 1px solid lightgray;
+            font-size: 13px;
+            padding: 10px 0px 0px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        div.cnt{
+            float: right;
+            width: 20px;
+            height: 20px;
+            border: 1px solid lightgrey;
+            text-align: center;
+            margin-right: 10px;
+            color: orange;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <div>A 아이템 구매 수</div>
+        <div class="cnt">0</div>
+    </div>
+    <div class="item">
+        <div>B 아이템 구매 수</div>
+        <div class="cnt">0</div>
+    </div>
+    <div class="item">
+        <div>C 아이템 구매 수</div>
+        <div class="cnt">0</div>
+    </div>
+</body>
+<script>
+    $('.item').click(function(){
+        var cnt = $(this).find('.cnt').html();
+        cnt++;
+        $(this).children().last().html(cnt);
+    });
+</script>
+</html>

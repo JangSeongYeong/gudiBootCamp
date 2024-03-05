@@ -1,0 +1,104 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <input type="text" value="some text"/>
+    <p>문자가 <b>강조된</b>영역</p>
+    <span id="txt"></span>
+    <span id="html"></span>
+
+    <fieldset>
+        <legend>숫자 입력</legend>
+        RANGE(0~100) : 
+        <input type="range" min="0" max="100" value="30" step="1"/>
+        당신이 선택한 값 : <span id="msg"></span>
+        <br/>
+        <button id="inc">증가</button>
+        <button id="dec">감소</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>라디오버튼</legend>
+        <div>
+            <input type="radio" name="front" value="HTML"/> HTML 
+        </div>
+        <div>
+            <input type="radio" name="front" value="CSS"/> CSS 
+        </div>
+        <div>
+            <input type="radio" name="front" value="JS"/> JS 
+        </div>
+        <span id="selected">선택값 없음</span>
+    </fieldset>
+
+</body>
+<script>
+    // 특정 속성 값 가져오기
+    var attr = $('input[type="text"]').attr('type');
+    console.log(attr);
+
+    // 특정 값(value 속성) 가져오기
+    var val = $('input[type="text"]').val();
+    console.log(val);
+
+    // 수정을 할 때는 수정할 값이 들어가야 한다.
+    $('input[type="text"]').attr('type','password');
+
+    var html = $('p').html();
+    var txt = $('p').text();
+    console.log(html, '==', txt); // 출력: 문자가 <b>강조된</b>영역 == 문자가 강조된영역
+    // html() : 태그 효과를 살려서 적용 한다.
+    $('#html').html('<h1>html() 과 text() 의 차이</h1>');
+    // text() : 태그를 단순 텍스트 취급 한다. (효과 없음)
+    $('#txt').text('<h1>html() 과 text() 의 차이</h1>');
+
+    // range의 초기값이 msg에 표시되며 이동시켰을때 값이 바뀌게끔
+    $('#msg').html($('input[type="range"]').val());
+    /*
+    $('input[type="range"]').on('mouseup',function(){
+        $('#msg').html($(this).val());
+    });
+    */
+   
+    var point = $('input[type="range"]').val();
+    $('input[type="range"]').mousedown(function(){
+        $(this).on('mousemove',function(){
+            $('#msg').html($(this).val());
+        });
+    });
+    $('input[type="range"]').mouseup(function(){
+        $(this).off('mousemove');
+        point = $(this).val();
+    });
+
+    // point == $('input[type="range"]').val();
+    // $('#inc').click(function(){
+    //     $('input[type="range"]').val(--point);
+    //     $('#msg').html(point);
+    // });
+
+    // $('#dec').click(function(){
+    //     $('input[type="range"]').val(++point);
+    //     $('#msg').html(point);
+    // });
+    
+    // 위의 코드 중복 제거하기
+    $('fieldset button').click(function(){
+        $(this).attr('id') == 'inc' ? ++point : --point;
+        $('input[type="range"]').val(point);
+        $('#msg').html(point);
+    })
+
+    //$('input[type="radio"]')
+    $(':radio').click(function(){
+        var val = $(this).val();
+        $('#selected').html(val);
+    });
+
+</script>
+</html>

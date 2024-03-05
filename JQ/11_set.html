@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <input type="text" value="홍길동"/>
+    <button>속성변경</button>
+    <div></div>
+</body>
+<script>
+    $('button').click(function(){
+        $('input[type="text"]').attr('type','button');
+        $('input[type="button"]').val("클릭");
+        $('input[type="button"]').attr('onclick','alert("OK")');
+    });
+
+    // append() : 해당 자식요소의 맨 마지막에 컨텐츠를 붙이는 함수
+    $('div').append('<input type="button" onclick="test(123)"" value="click"/>');
+    // test('param') - 문자라는것으로 표시 \
+    // escape 문자 : 특수 능력을 가진 문자열의 특수 능력을 무력화 하는 문자(대상 문자 앞에 넣어준다.)
+    $('div').append('<input type="button" onclick="test(\'param\')" value="click2"/>');
+
+    function test(arg){
+        alert(arg);
+    }
+</script>
+</html>

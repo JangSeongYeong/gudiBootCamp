@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            top: 200px;
+            float: left;
+        }
+        div.first{
+            background-color: cadetblue;
+        }
+        div.second{
+            background-color: coral;
+            left: 220px;
+        }
+        div.third{
+            background-color: darkred;
+            left: 430px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="first"></div>
+    <div class="second"></div>
+    <div class="third"></div>
+</body>
+<script>
+    $('div').on('mouseenter', graphUp);
+    $('div').on('mouseout', function(){
+        $(this).off('mouseenter');
+        $(this).animate({top:'200px',height:'50px'}, 'slow','swing',function(){
+            $(this).on('mouseenter', graphUp);
+        });
+    });
+
+    function graphUp(){
+        $(this).animate({top:'50px', height:'200px'}, 'slow', 'swing');
+    }
+</script>
+</html>

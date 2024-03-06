@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            background-color: green;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="viz">fadeIn</button>
+    <button id="inviz">fadeOut</button>
+    <button id="togle">ON</button>
+    <div></div>
+    <br/>
+    <img src="../img/chrome.png" width="150px"/>
+</body>
+<script>
+    function check() {
+        if($('div').css('display') == 'none'){
+                $('#togle').html('ON');
+        } else{
+            $('#togle').html('OFF');
+        }
+    }
+
+    $('button').click(function(){
+        if($(this).attr('id') == 'viz') {
+            $('div').fadeIn('slow', check); // slow/fast
+        } else if($(this).attr('id') == 'inviz'){
+            $('div').fadeOut('slow', check);
+        } else if($(this).attr('id') == 'togle'){
+            $('div').fadeToggle('slow', check);
+        }
+    });
+
+    // 지정한 opacity 만큼 투명해진다.
+    $('img').hover(function(){
+        $(this).fadeTo('slow', 0.2);
+    }, function(){
+        $(this).fadeTo('slow', 1);
+    });
+</script>
+</html>

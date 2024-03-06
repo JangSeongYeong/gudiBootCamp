@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .ex{
+            background-color: cadetblue;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button id="add">클래스 추가</button>
+    <button id="remove">클래스 삭제</button>
+    <button id="toggle">클래스 토글</button>
+    <div>DIV</div>
+</body>
+<script>
+    /*
+    // addClass('클래스이름')
+    $('#add').click(function(){
+        $('div').addClass('ex');
+    });
+    // removeClass('클래스이름')
+    $('#remove').click(function(){
+        $('div').removeClass('ex');
+    });
+    // toggleClass('클래스이름')
+    $('#toggle').click(function(){
+        $('div').toggleClass('ex');
+    });
+    */
+
+    $('button').on('click',function(){
+        switch($(this).attr('id')){
+            case 'add':
+                $('div').addClass('ex');
+                break;
+            case 'remove':
+                $('div').removeClass('ex');
+                break;
+            /*
+            case 'toggle': 
+                $('div').toggleClass('ex');
+                if($('div').attr('class')==""){
+                    $(this).html('클래스 추가');
+                } else{
+                    $(this).html('클래스 삭제');
+                }
+                break;
+            */
+        }
+    });
+
+    $('#toggle').click(function(){
+        $('div').toggleClass('ex');
+        var sw = $('div').hasClass('ex');
+        if(sw){
+            $(this).html('remove');
+        } else{
+            $(this).html('add');
+        }
+    });
+</script>
+</html>

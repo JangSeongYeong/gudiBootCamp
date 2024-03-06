@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div.menu{
+            width: 100px;
+            padding: 10px 0px;
+            background-color: green;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">메뉴 1</div>
+    <ul>
+        <li>LIST 01</li>
+        <li>LIST 02</li>
+        <li>LIST 03</li>
+        <li>LIST 04</li>
+        <li>LIST 05</li>
+    </ul>
+    <hr/>
+    <button>OFF</button>
+    <div>
+        <p>LIST 01</p>
+        <p>LIST 02</p>
+        <p>LIST 03</p>
+        <p>LIST 04</p>
+        <p>LIST 05</p>
+    </div>
+</body>
+<script>
+    $('ul').hide();
+    $('div.menu').hover(function(){
+        $('ul').show(100);
+    }, function(){
+        $('ul').hide(100);
+    });
+
+    $('button').click(function(){
+        $('p').toggle(100, function(){
+            var sw = $('p').css('display');
+            if(sw == 'block'){
+                $('button').html('OFF');
+            } else{
+                $('button').html('ON');
+            }
+        });
+    })
+</script>
+</html>

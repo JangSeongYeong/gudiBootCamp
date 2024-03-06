@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        #follow{
+            position: absolute;
+        }   
+        #obj{
+            position: absolute;
+            background-color: green;
+            left: 50%;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+        } 
+    </style>
+</head>
+<body>
+    <div id="obj"></div>
+    <div id="follow">마우스를 따라다녀요</div>
+</body>
+<script>
+    // 마우스 무브 이벤트는 연속적으로 빠르게 일어나기 때문에 animate 가 필요없다.
+    $(document).on('mousemove', function(e){
+        // console.log(e.clientX+'/'+e.clientY);
+        $('#follow').css({
+            top:e.clientY,
+            left:e.clientX
+        });
+    });
+
+    $(document).click(function(e){
+        $('#obj').animate({
+            top:e.clientY,
+            left:e.clientX
+        },'slow','swing'); // liner는 일정, swing은 가까우면 천천히, 멀면 가속도가 붙어 빠르게
+    });
+
+</script>
+</html>

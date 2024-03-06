@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            background-color: blue;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            position: absolute;
+            left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="left">◀</button>
+    <button id="right">▶</button>
+    <button id="stop">■</button>
+    <button id="special">⭐</button>
+    <button id="step">step</button>
+    <div id="obj"></div>
+</body>
+<script>
+    $('#right').click(function(){
+        // $('div').animate({'left':'100'},'slow','linear'); // 100까지만 움직임
+        $('div').animate({'left':'+=500'},'slow','linear'); // 100 씩 움직임
+    });
+    $('#left').click(function(){
+        $('div').animate({'left':'-=500'},'slow','linear'); // 100 씩 움직임
+    });
+
+    $('#stop').click(function(){
+        $('div').stop();
+    });
+    $('#special').click(function(){
+        $('div').animate({
+            left:'+=100',
+            width:'-=10',
+            height:'-=10',
+            opacity:'-=0.3'
+        },'slow','linear', function(){
+            alert('animation 끝');
+        });
+    });
+
+    // method chaining ex) ~~.~~~.~~~.~~ (단일대상한정)
+    $('#step').click(function(){
+        $('div').animate({left:'+=300'}, 'slow')
+            .animate({top:'+=300'},'slow')
+            .animate({left:'-=300'},'slow')
+            .animate({top:'-=300'},'slow');
+    });
+
+
+</script>
+</html>

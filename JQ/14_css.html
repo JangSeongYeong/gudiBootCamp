@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <p id="ex1" style="color: blue; font-size: 32px;">스타일 적용</p>
+    <p id="ex2">스타일 미적용</p>
+    <div>
+        font size : <span id="size"></span><br/>
+        font color : <span id="color"></span><br/>
+        <button>css 적용</button> 
+    </div>
+</body>
+<script>
+    var color = $('#ex1').css('color');
+    var size = $('#ex1').css('font-size');
+    $('#size').html(size);
+    $('#color').html(color);
+
+    $('div button').click(function(){
+        // console.log($('#ex2'));
+        // $('#ex2').css('color',color); 
+        // $('#ex2').css('font-size',size);
+
+        $('#ex2').css({
+            'color':color, 
+            'font-size':size
+        });
+    });
+</script>
+</html>

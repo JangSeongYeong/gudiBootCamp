@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            text-align: center;
+            background-color: yellowgreen;
+            border: 1px solid green;
+            padding: 5px;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        div.panel{
+            padding: 50px 0px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="flip">메뉴1</div>
+    <div class="panel">서브메뉴</div>
+
+    <div id="flip2">메뉴2</div>
+    <div class="panel">서브메뉴</div>
+</body>
+<script>
+    // slideDown(speed, callback) : 아래로 커지면서 나타남
+    // slideUp(speed, callback) : 위로 작아지면서 나타남
+    
+    /*
+    $('#flip').hover(function(){
+        $(this).next().slideDown('slow');
+    },function(){
+        $(this).next().slideUp('slow');
+    });
+    */
+
+    $('#flip').on('mouseenter',down);
+
+    $('#flip').on('mouseleave',function(){
+        $('#flip').off('mouseenter');
+        $(this).next().slideUp('slow',function(){
+            $('#flip').on('mouseenter',down);
+        });
+    });
+
+    function down(){
+        $(this).next().slideDown('slow');
+    }
+
+    // slideToggle(speed, callback) : 아래 위 반복
+    $('#flip2').click(function(){
+        $(this).next().slideToggle('slow');
+    });
+    
+</script>
+</html>

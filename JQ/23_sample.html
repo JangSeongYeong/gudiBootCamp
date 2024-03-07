@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>J-QUERY</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Content Delivery Network 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td{
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <table width="100%">
+        <tr>
+           <th>학번</th>
+           <th>이름</th>
+           <th>과목</th>
+           <th>학점</th>
+           <th>설명</th> 
+        </tr>
+    </table>
+    학번 : <input type="text" id="no" /><br/>
+    이름 : <input type="text" id="name" /><br/>
+    과목 : <input type="text" id="sub" /><br/>
+    학점 : <input type="text" id="score" /><br/>
+    설명 : <input type="text" id="desc" /><br/>
+    <button>등록</button>
+</body>
+<script>
+    function draw(){
+        // var content = '<tr>';
+        // content += '<td>'+$('#no').val()+'</td>';
+        // content += '<td>'+$('#name').val()+'</td>';
+        // content += '<td>'+$('#sub').val()+'</td>';
+        // content += '<td>'+$('#score').val()+'</td>';
+        // content += '<td>'+$('#desc').val()+'</td>';
+        // content += '</tr>';
+
+        var content = '<tr>';
+        var $input = $('input[type="text"]'); // J-Query가 들어간 변수면 $를 넣어주기
+        for(var i = 0; i<$input.length; i++){
+            content += '<td>'+$input.eq(i).val()+'</td>'; // 제이쿼리 객체에 자바스크립트 문법을 쓴다면 자바스크립트로 바뀐다. ex) [0]
+        }
+        content += '</tr>';
+        $('table').append(content);
+        // 이렇게 축약이 가능하지만 실무에서는 위에 코드를 더 선호한다. 아래는 순서가 꼬이면 망가지기에
+    }
+
+    $('button').click(draw);
+
+    $('#desc').keyup(function(e){
+        if(e.keyCode == 13){
+            draw();
+        }
+    });
+
+
+    
+</script>
+</html>

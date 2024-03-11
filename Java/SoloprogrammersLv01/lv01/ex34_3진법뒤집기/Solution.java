@@ -18,13 +18,27 @@ public class Solution {
     	// 3진수 배열 크기 만들기
     	int answer = 3;
         int count = 1;
-        while (answer < 125) {
+        while (answer <= n) {
 			answer *= 3;
 			count++;
 		}
-        System.out.println(Math.pow(3, 3));
+        answer /= 3;
         
-        System.out.println(count);
-        return answer;
+        // 3진법 변환
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i < count; i++) {
+			list.add(n/answer);
+			n %= answer;
+			answer /= 3;
+        }
+        // reverse
+        // Collections.reverse(list);
+        
+        // 10진수로
+        int result = 0;
+        for (int i = 0; i < list.size(); i++) {
+        	result += (int)Math.pow(3, i) * list.get(i);
+		}
+        return result;
     }
 }

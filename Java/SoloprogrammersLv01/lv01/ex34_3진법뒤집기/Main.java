@@ -12,6 +12,9 @@ public class Main {
 		result = sol.solution(125);
 		System.out.println("229 == "+result);
 		
+		result = sol.solution(3);
+		System.out.println("1 == "+result);
+		
 	}
 
 }

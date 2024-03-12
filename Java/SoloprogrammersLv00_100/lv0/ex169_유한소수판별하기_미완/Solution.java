@@ -1,4 +1,4 @@
-package lv0.ex169_유한소수판별하기;
+package lv0.ex169_유한소수판별하기_미완;
 
 public class Solution {
 	/* 소수점 아래 숫자가 계속되지 않고 유한개인 소수를 유한소수라고 합니다. 

@@ -1,4 +1,4 @@
-package lv0.ex169_유한소수판별하기;
+package lv0.ex169_유한소수판별하기_미완;
 
 public class Main {
 

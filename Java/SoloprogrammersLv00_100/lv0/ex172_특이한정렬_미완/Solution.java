@@ -1,4 +1,4 @@
-package lv0.ex172_특이한정렬;
+package lv0.ex172_특이한정렬_미완;
 
 import java.util.Arrays;
 

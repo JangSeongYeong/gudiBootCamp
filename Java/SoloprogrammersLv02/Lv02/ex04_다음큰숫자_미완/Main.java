@@ -1,4 +1,4 @@
-package Lv02.ex04_다음큰숫자;
+package Lv02.ex04_다음큰숫자_미완;
 
 public class Main {
 

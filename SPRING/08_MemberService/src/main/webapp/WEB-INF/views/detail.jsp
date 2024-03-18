@@ -16,25 +16,36 @@
 </style>
 </head>
 <body>
-	<h3>회원 리스트</h3>
-	<hr/>
 	<table>
 		<tr>
 			<th>ID</th>
-			<th>이름</th>
-			<th>나이</th>
-			<th>이메일</th>
-			<th>삭제</th>
+			<td>${member.id}</td>
 		</tr>
-		<c:forEach items="${list}" var="member">
-			<tr>
-				<td>${member.id}</td>
-				<td><a href="detail?id=${member.id}">${member.name}</a></td> <!-- ? : get 방식일 때 id라는 파라메터를 보낼 것이다. -->
-				<td>${member.age}</td>
-				<td>${member.email}</td>
-				<td><a href="del?id=${member.id}">삭제</a></td>			
-			</tr>
-		</c:forEach>
+		<tr>
+			<th>PW</th>
+			<td>${member.pw}</td>
+		</tr>
+		<tr>
+			<th>NAME</th>
+			<td>${member.name}</td>
+		</tr>
+		<tr>
+			<th>AGE</th>
+			<td>${member.age}</td>
+		</tr>
+		<tr>
+			<th>GENDER</th>
+			<td>${member.gender}</td>
+		</tr>
+		<tr>
+			<th>EMAIL</th>
+			<td>${member.email}</td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<a href="list">회원목록</a>
+			</th>
+		</tr>
 	</table>
 </body>
 <script>

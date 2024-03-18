@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -11,6 +13,8 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import kr.co.gudi.dto.MemberDTO;
 
 public class MemberDAO {
 	Logger logger = LoggerFactory.getLogger(getClass());
@@ -83,29 +87,83 @@ public class MemberDAO {
 		return success;
 	}
 
-	public void list() {
+	public List<MemberDTO> list() {
 		
-		// 1. 쿼리문 중비
+		// 1. 쿼리문 준비
 		String sql = "SELECT id, name, age, email FROM member";
+		List<MemberDTO> list = new ArrayList<MemberDTO>(); // catch에 걸렸을때 대비로 위에 뺴기
 		try {
 			// 2. 실행 객체 준비
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// 3. 실행
  			ResultSet rs = ps.executeQuery();
+ 			
  			while (rs.next()) { // 4. 데이터 가져오기
  				String id = rs.getString("id");
  				String name = rs.getString("name");
  				int age = rs.getInt("age");
  				String email = rs.getString("email");
- 				logger.info(id+" "+name+" "+age+" "+email);
+ 				// logger.info(id+" "+name+" "+age+" "+email);
+ 				MemberDTO dto = new MemberDTO(id, name, age, email);
+ 				list.add(dto);
 			}
 			// 5. 자원 반납
  			rs.close();
  			ps.close();
+ 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		return list;
 	}
+
+	public MemberDTO detail(String id) {
+		logger.info("DAO detail 진입");
+
+		String sql = "SELECT id, pw, name, age, gender, email FROM member WHERE id = ?";
+		MemberDTO dto = null;
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				String mem_id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				String gender = rs.getString("gender");
+				String email =rs.getString("email");
+
+				logger.info(mem_id+" "+pw+" "+name+" "+age+" "+gender+" "+email);
+				
+				dto = new MemberDTO(mem_id, pw, name, age, gender, email);
+			}
+			rs.close();
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
+	public void delete(String id) {
+		logger.info("DAO del 진입");
+		String sql = "DELETE FROM member WHERE id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			int row = ps.executeUpdate();
+			logger.info("지운 갯수 : "+row);
+			
+			ps.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 
 }

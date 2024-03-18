@@ -1,6 +1,7 @@
 package kr.co.gudi.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.gudi.dto.MemberDTO;
 import kr.co.gudi.service.MemberService;
 
 @Controller
@@ -77,9 +79,9 @@ public class MemberController {
 			page = "redirect:/list"; // list 라는 요청으로 이동시켜라 - /list 라는 컨트롤러(RequestMapping)으로 가라
 			// msg = id+" 님, 환영 합니다."; // redirec 사용시 model 의 값을 전달 할 수 없다.
 			session.setAttribute("loginId", id);
+		} else {
+			model.addAttribute("msg", msg);
 		}
-		
-		model.addAttribute("msg", msg);
 		
 		return page;
 	}
@@ -95,7 +97,42 @@ public class MemberController {
 		if(session.getAttribute("loginId") != null) { // 로그인 상태이면
 			page = "list";
 			MemberService service = new MemberService();
-			service.list();
+			List<MemberDTO> list = service.list();
+			logger.info("size : {}",list.size());
+			model.addAttribute("list", list);
+		} else {
+			page = "redirect:/";
+		}
+		
+		return page;
+	}
+	
+	// 회원 상세보기
+	@RequestMapping(value = "/detail")
+	public String detail(Model model, String id, HttpSession session){
+		logger.info("detail 진입");
+		String page = "redirect:/"; // 로그인 페이지로
+		
+		if (session.getAttribute("loginId") != null) {
+			logger.info("id="+id);
+			MemberService service = new MemberService();
+			MemberDTO dto = service.detail(id);
+			model.addAttribute("member", dto);
+			page = "detail";
+		} 
+		
+		return page;
+	}
+	
+	// 회원 삭제
+	@RequestMapping(value = "/del")
+	public String del(String id, HttpSession session) {
+		logger.info("delete id : "+ id);
+		String page = "redirect:/";
+		if(session.getAttribute("loginId") != null) {
+			MemberService service = new MemberService();
+			service.delete(id);
+			page = "redirect:/list";
 		}
 		
 		return page;

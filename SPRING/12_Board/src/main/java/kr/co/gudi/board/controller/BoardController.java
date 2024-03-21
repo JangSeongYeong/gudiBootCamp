@@ -103,4 +103,34 @@ public class BoardController {
 		return page;
 	}
 	
+	// 글 수정 페이지
+	@RequestMapping(value="/updateForm")
+	public String updateForm(String idx, HttpSession session, Model model) {
+		String page = "redirect:/list";
+		logger.info("update form idx = "+idx);
+		
+		if (session.getAttribute("loginId") != null) {
+			BoardDTO bbs = service.updateForm(idx);
+			model.addAttribute("bbs", bbs);
+			page = "updateForm";
+		}
+		
+		return page;
+	}
+	
+	// 글 수정
+	@RequestMapping(value = "/update", method = RequestMethod.POST )
+	public String update(HttpSession session, @RequestParam Map<String, String> param, Model model) {
+		String page = "redirect:/list"; // 로그인 실패시 메시지 때문에
+		logger.info("update 실행");
+		
+		if (session.getAttribute("loginId") != null ) {
+			logger.info("param : {}", param);
+			service.update(param);
+			page = "redirect:/detail?idx="+param.get("idx");
+		}
+		
+		return page;
+	}
+	
 }

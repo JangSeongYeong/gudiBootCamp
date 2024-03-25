@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+>
+<!-- 이 xml 은 어떤 interface 를 참조해서 사용해야 하는가? - 이름 설정에 주의한다. -->
+<mapper namespace="our.first.project.member.dao.MemberDAO">
+	
+	<select id="login" resultType="String">
+		SELECT id FROM member 
+			WHERE id = #{param1} AND pw = #{param2}
+	</select>
+	
+	<select id="memberList" resultType="our.first.project.member.dto.MemberDTO">
+		SELECT id, name, age, email FROM member
+	</select>
+	
+	<insert id="join" parameterType="map">
+		INSERT INTO member(id, pw, name, age, gender, email)
+			VALUES(#{id}, #{pw}, #{name}, #{age}, #{gender}, #{email})
+	</insert>
+	
+</mapper>

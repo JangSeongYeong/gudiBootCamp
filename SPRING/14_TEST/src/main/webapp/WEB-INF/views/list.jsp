@@ -5,38 +5,45 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="resources/common.css" type ="text/css">
 <style>
-	table, th, td {
-		border: 1px solid black;
-		border-collapse: collapse;
-	}
-	th, td {
-		padding: 5px 10px;
-	}
 </style>
 </head>
 <body>
-	<h3>회원 리스트</h3>
-	<hr/>
-	<table>
+	${loginBox}
+	<button onclick="location.href='write.go'">글쓰기</button>
+	<!-- ${sessionScope.loginInfo.perm} 권한이 없는 경우 공백으로 반환 null X -->
+	<c:if test="${sessionScope.loginInfo.perm eq 'on'}">
+		<a href="./member_list">회원 리스트 보기</a>	
+	</c:if>
+<table>
+	<tr>
+		<th>글번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>조회수</th>
+		<th>등록일</th>
+		<th>삭제</th>		
+	</tr>
+	<c:if test = "${list.size()<1}">
+		<tr><td colspan="6">작성된 게시글이 없습니다.</td></tr>
+	</c:if>
+	<c:forEach items="${list}" var="bbs">
 		<tr>
-			<th>ID</th>
-			<th>이름</th>
-			<th>나이</th>
-			<th>이메일</th>
-			<th>삭제</th>
+			<td>${bbs.idx}</td>
+			<td><a href="detail?idx=${bbs.idx}">${bbs.subject}</a></td>
+			<td>${bbs.user_name}</td>
+			<td>${bbs.bHit}</td>
+			<td>${bbs.reg_date}</td>
+			<td><a href="del?idx=${bbs.idx}">삭제</a></td>
 		</tr>
-		<c:forEach items="${list}" var="member">
-			<tr>
-				<td>${member.id}</td>
-				<td><a href="detail?id=${member.id}">${member.name}</a></td> <!-- ? : get 방식일 때 id라는 파라메터를 보낼 것이다. -->
-				<td>${member.age}</td>
-				<td>${member.email}</td>
-				<td><a href="del?id=${member.id}">삭제</a></td>			
-			</tr>
-		</c:forEach>
-	</table>
+	</c:forEach>
+</table>
 </body>
 <script>
+	var msg ='${msg}';
+	if(msg != ''){
+		alert(msg);
+	}
 </script>
 </html>

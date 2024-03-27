@@ -1,9 +1,9 @@
-package kr.ajax.board.dto;
+package team.first.project.board.dto;
 
 import java.sql.Date;
 
 public class BoardDTO {
-	
+
 	private int idx;
 	private int img_cnt;
 	private String subject;
@@ -11,7 +11,6 @@ public class BoardDTO {
 	private String content;
 	private int bHit;
 	private Date reg_date;
-	
 	public int getIdx() {
 		return idx;
 	}
@@ -48,18 +47,9 @@ public class BoardDTO {
 	public void setbHit(int bHit) {
 		this.bHit = bHit;
 	}
-	
-	/* 방법 1
 	public String getReg_date() {
 		return reg_date.toString();
 	}
-	*/
-
-	
-	public Date getReg_date() { 
-		return reg_date; 
-	}
-	 
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}

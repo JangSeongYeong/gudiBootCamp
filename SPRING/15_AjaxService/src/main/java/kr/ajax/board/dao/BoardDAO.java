@@ -8,4 +8,9 @@ public interface BoardDAO {
 
 	List<BoardDTO> list();
 
+	List<String> getFiles(String idx);
+
+	int del(String idx);
+
+	
 }

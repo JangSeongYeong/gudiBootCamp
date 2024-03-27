@@ -3,9 +3,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"
 >
 
-<mapper namespace="kr.ajax.board.dao.BoardDAO">
+<mapper namespace="team.first.project.board.dao.BoardDAO">
 
-	<select id="list" resultType="kr.ajax.board.dto.BoardDTO">
+	<select id="listCall" resultType="team.first.project.board.dto.BoardDTO">
 		SELECT 
 			(select count(new_filename) from photo p where p.idx = b.idx) as img_cnt
 			,b.idx
@@ -13,11 +13,11 @@
 			,b.user_name
 			,b.bHit
 			,b.reg_date
-		FROM bbs b ORDER BY idx DESC;
-	</select>
+		FROM bbs b order by idx desc;
+	</select>	
 	
-	<select id="getFiles" resultType="String">
-		SELECT new_filename FROM photo WHERE idx = #{param1} 
+	<select id="fileList" resultType="String">
+		SELECT new_filename FROM photo WHERE idx = #{param1}
 	</select>
 	
 	<delete id="del">

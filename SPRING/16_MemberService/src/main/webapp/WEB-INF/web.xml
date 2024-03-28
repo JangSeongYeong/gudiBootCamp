@@ -2,11 +2,7 @@
 <web-app version="2.5" xmlns="http://Java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	
-	<!-- web.xml은 서버 접속시 가장 먼저 읽힌다. -->
-	<!-- 그래서 주요 설정파일 및 인코딩 설정 등이 들어간다 -->
-	
-	
+
 	<!-- 한글 깨짐 방지 -->
    <!-- 사용할 필터 이름과 연결할 클래스 -->
    <filter>
@@ -28,7 +24,8 @@
        <filter-name>encodingFilter</filter-name>
        <url-pattern>/*</url-pattern>
    </filter-mapping> 
-	
+
+
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

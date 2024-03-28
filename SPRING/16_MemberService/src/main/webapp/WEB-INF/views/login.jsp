@@ -10,7 +10,7 @@
 </style>
 </head>
 <body>
-	<h2>로그인</h2>
+	<h2>회원관리 시스템 로그인</h2>
 	<form action="login.do" method="post">
 		<table>
 			<tr>
@@ -29,12 +29,14 @@
 			</tr>
 		</table>
 	</form>
+	${msg}
 </body>
 <script>
 	var msg = '${msg}'; // 쿼터 빠지면 넣은 문구가 변수로 인식됨.
 	if(msg != ''){
 		alert(msg);
 	}
+
 
 	$('input[type="button"]').on('click',function(){
 		console.log('click');

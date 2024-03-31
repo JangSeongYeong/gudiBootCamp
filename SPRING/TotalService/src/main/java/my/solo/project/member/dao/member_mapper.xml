@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="my.solo.project.member.dao.MemberDAO">	
+	
+	<select id="overlay" resultType="Integer">
+		SELECT COUNT(id) FROM member WHERE id = #{param1};
+	</select>
+	
+	<insert id="join" parameterType="map">
+		INSERT INTO member(id, pw, name, age, gender, email) 
+			VALUES(#{id}, #{pw}, #{name}, #{age}, #{gender}, #{email});
+	</insert>
+	
+	<insert id="grant">
+		INSERT INTO author(id, perm)
+			VALUES(#{param1}, #{param2})
+	</insert>
+	
+	<select id="login" resultType="my.solo.project.member.dto.MemberDTO">
+		SELECT m.id, a.perm
+			FROM member m LEFT JOIN author a ON m.id = a.id
+		WHERE m.id = #{param1} AND pw = #{param2}
+	</select>
+	
+</mapper>

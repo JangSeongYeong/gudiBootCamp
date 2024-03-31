@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="my.solo.project.board.dao.BoardDAO">	
+	
+	<select id="list" resultType="my.solo.project.board.dto.BoardDTO">
+		SELECT 
+		   (SELECT COUNT(new_filename) FROM photo p WHERE p.idx = b.idx) AS img_cnt
+		   ,b.idx
+		   ,b.subject
+		   ,b.user_name
+		   ,b.bHit
+		   ,b.reg_date
+		FROM bbs b ORDER BY idx desc LIMIT #{param1}, #{param2}
+	</select>
+	
+	<select id="totalPages" resultType="Integer">
+		SELECT CEIL(COUNT (idx)/#{param1}) AS pages FROM bbs
+	</select>
+	
+	<select id="delPhotos" resultType="String">
+		SELECT new_filename FROM photo WHERE idx = #{param1}
+	</select>
+	
+	<delete id="del">
+		DELETE FROM bbs WHERE idx = #{param1}
+	</delete>
+	
+	<insert id="write"
+		useGeneratedKeys="true"
+		keyColumn="idx"
+		keyProperty="idx" 
+		parameterType="my.solo.project.board.dto.BoardDTO">
+		INSERT INTO bbs(user_name, subject, content)
+			VALUES(#{user_name}, #{subject}, #{content})
+	</insert>
+	
+	<insert id="fileSave">
+		insert into photo(idx, ori_filename, new_filename)
+			values(#{param1}, #{param2}, #{param3})
+	</insert>
+	
+</mapper>

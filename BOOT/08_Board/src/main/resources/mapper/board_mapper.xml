@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gudi.dao.BoardDAO">
+	
+	<!-- 글 목록 가져오기 -->
+	<select id="getBBSList" resultType="board">
+		SELECT idx,user_name,subject,bHit,reg_date FROM bbs
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="bHit" parameterType="String">
+		update bbs set bHit=bHit+1 where idx = #{idx}
+	</update>
+	
+	<!-- 글 보기 -->
+	<select id="detail" parameterType="String" resultType="board">
+		SELECT idx2,user_name,subject,bHit,content FROM bbs
+			where idx = #{idx}
+	</select>
+	
+	<!-- 글 삭제 -->
+	<delete id="delete">
+		DELETE FROM bbs WHERE idx=#{param1}
+	</delete>
+
+	<!-- 글 작성 & 파일 같이 올리기 -->
+	<!-- 
+		useGeneratedKeys="true" : insert 후 생성 키 사용 가져오기
+		keyColumn="idx" : 가져올 키 이름
+		keyProperty="idx" : 키를 저장할 dto의 속성(필드)명
+	 -->
+	<insert id="write">
+		useGeneratedKeys="true" 
+		keyColumn="idx"
+		keyProperty="idx"
+		parameterType="board">
+		insert into bbs(user_name,subject,content)
+			values(#{user_name},#{subject},#{content})
+	</insert>
+	
+	<insert id="writeFile">
+		insert into photo(ori_filename, new_filename, idx)
+			values(#{param1},#{param2},#{param3})
+	</insert>
+	
+	<!-- 글 수정 -->
+	<update id="update" parameterType="map">
+		update bbs set user_name = #{user_name},  subject = #{subject}, content = #{content} 
+			where idx = #{idx};
+	</update>
+	
+	
+</mapper>

@@ -14,4 +14,8 @@ public interface MemberDAO {
 
 	List<MemberDTO> list(Map<String, String> params);
 
+	List<MemberDTO> multi(List<String> name);
+
+	int update(Map<String, String> param);
+
 }

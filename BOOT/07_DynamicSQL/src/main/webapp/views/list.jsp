@@ -15,10 +15,27 @@
 	th, td{
 		padding: 5px 10px;
 	}
+	
+	li {
+		list-style-type: none;
+	}
 </style>
 </head>
 <body>
 	<p>${msg}</p>
+	<fieldset>
+		<form action="multi.do" method="get">
+			이름이
+			<ul id="search_name">
+				<li>
+					<input type="text" name="name"/>
+					<input type="button" value="또는" onclick="add(this)" />
+				</li>
+			</ul>
+			인 회원 찾기
+			<button>찾기</button>
+		</form>
+	</fieldset>
 	<table>
 		<tr>
 			<th>ID</th>
@@ -39,10 +56,30 @@
 		</tr>
 		</c:forEach>
 	</table>
-	
+	<fieldset>
+		<form action="update.do" method="post">
+			<p>수정대상 ID : <input type="text" name="id"></p>
+			<p>PW : <input type="text" name="pw"></p>
+			<p>NAME : <input type="text" name="name"></p>
+			<p>AGE : <input type="text" name="age"></p>
+			<p>
+				GENDER : <input type="radio" name="gender" value="남"> 남
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="gender" value="여"> 여
+			</p>
+			<p>EMAIL : <input type="text" name="email"></p>
+			<button>수정요청</button>
+		</form>
+	</fieldset>
 	
 	
 	
 </body>
-<script></script>
+<script>
+	function add(elem) {
+		var content = $(elem).closest('li').html();
+		$('#search_name').append('<li>'+content+'</li>');
+	}
+
+</script>
 </html>

@@ -61,6 +61,25 @@ public class MemberService {
 		
 		return mav;
 	}
+
+	public ModelAndView multi(List<String> name) {
+		ModelAndView mav = new ModelAndView("list"); // view를 생성할 때 지정해줘도 괜찮다. (생성자 오버로드)
+		List<MemberDTO> list = memberDAO.multi(name);
+		mav.addObject("list", list);
+		return mav;
+	}
+
+	public ModelAndView update(Map<String, String> param) {
+		ModelAndView mav = new ModelAndView("result");
+		int result = memberDAO.update(param);
+		String msg = param.get("id")+"에 대한 정보를 수정 했습니다.";
+		if (result < 1) {
+			msg = param.get("id")+"에 대한 정보를 수정에 실패 했습니다.";
+		}
+		mav.addObject("msg", msg);
+		
+		return mav;
+	}
 	
 	
 	

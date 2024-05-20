@@ -44,5 +44,33 @@
 			</where> 
 	</select>
 	
+	<!-- SELECT * FROM member WHERE name = '장성영' OR name = '계정' OR name = 'YEONG' {executed in 1 msec} -->
+	<!-- SELECT * FROM member WHERE name IN('장성영', '계정', 'YEONG') {executed in 1 msec} -->
+	<select id="multi" parameterType="list" resultType="member">
+		SELECT * FROM member
+		<where>
+			<if test="list.size() != 0">
+				name IN
+				<foreach collection="list" item="item" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+	</select>
+	
+	<!-- 입력하지 않은 정보는 수정되지 않도록 하고 싶다. -->
+	<!-- 이때 , 가 문제가 되는데 set 태그를 사용하면 불필요한 , 는 알아서 제거해 준다. -->
+	<update id="update" parameterType="map">
+		update member 
+		<set>
+			<if test="!pw.equals('')">pw = #{pw}</if>
+			<if test="!name.equals('')">, name = #{name}</if>
+			<if test="!age.equals('')">, age = #{age}</if>
+			<if test="gender != null">, gender = #{gender}</if>
+			<if test="!email.equals('')">, email = #{email}</if>
+		</set> 
+		WHERE id = #{id}
+	</update>
+	
 	
 </mapper>

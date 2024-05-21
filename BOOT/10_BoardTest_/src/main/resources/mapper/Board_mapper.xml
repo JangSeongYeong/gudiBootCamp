@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gudi.dao.BoardDAO">
+	
+	<select id = "list" resultType="board">
+		SELECT idx, subject, user_name, bHit, reg_date FROM bbs ORDER BY idx DESC	
+	</select>
+	
+	<select id="login" resultType="int">
+		SELECT COUNT(id) FROM member
+			WHERE id = #{param1} AND pw = #{param2}
+	</select>
+	
+	<!-- 2. useGeneratedKeys, keyColumn, keyProperty -->
+	<insert id="write" 
+		parameterType="board"
+		useGeneratedKeys="true"
+		keyColumn="idx"
+		keyProperty="idx">
+		INSERT INTO bbs(subject, user_name, content)
+			VALUES(#{subject}, #{user_name}, #{content})
+	</insert>
+	
+	<update id="upHit" parameterType="String">
+		UPDATE bbs SET bHit = bHit + 1 WHERE idx = #{idx}
+	</update>
+	
+	<select id="detail" resultType="board">
+		SELECT * FROM bbs WHERE idx = #{param1}
+	</select>
+	
+</mapper>

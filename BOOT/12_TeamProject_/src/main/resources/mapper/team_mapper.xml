@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gudi.dao.MainDAO">
+	
+	<!--팀원 목록 가져오기 -->
+	<select id="getTeamList" resultType="team">
+		SELECT team_name, project_name, team_leader, staff1, staff2, staff3, staff4, staff5 
+			FROM team_project ORDER BY team_name
+	</select>
+	
+	<!-- 데이터 업데이트 -->
+	<!-- 
+	<update id="update" parameterType="map">
+		UPDATE team_project SET
+			<if test="col=='project_name'">project_name = </if>
+			<if test="col=='team_leader'">team_leader = </if>
+			<if test="col=='staff1'">staff1 = </if>
+			<if test="col=='staff2'">staff2 = </if>
+			<if test="col=='staff3'">staff3 = </if>
+			<if test="col=='staff4'">staff4 = </if>
+			<if test="col=='staff5'">staff5 = </if>
+			#{val}
+		WHERE team_name = #{pk}
+	</update>
+	 -->
+	 
+	<!-- 
+	 	${param} 은 변수에 있는 값을 컬럼으로 지정할 때 사용, 
+	 	#{param} 은 값 주위에 강제적으로 싱글쿼터가 찍히는 반면
+		${param} 은 찍히지 않기 때문
+	 	하지만 보안상으로 사용을 권고하지 않는다.
+	 	
+	 	* 이유 : 컬럼을 사용자가 임의로 지정할 수 있기 때문이다.
+	 	예) team_name 은 pk 이기 떄문에 수정하면 안되지만 사용자가 지정할 수 있게 된다.
+	 	
+	 	사용하는 법은 뷰를 만들어 보여줘도 되는 부분만으로 구성하여 사용하는 방식으로 한다. SELECT에서 그나마 사용
+ 	-->
+	<update id="update" parameterType="map">
+		UPDATE team_project SET ${col} = #{val}
+			WHERE project_name = #{pk}
+	</update>
+	 
+</mapper>
